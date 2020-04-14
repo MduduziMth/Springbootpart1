@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @Repository
 public class FakeRepo implements FakeRepoInterface {
 
-    ArrayList<User> userArray = new ArrayList<>();
+    static  ArrayList<User> userArray = new ArrayList<>();
 
 
     @Override
@@ -20,15 +20,30 @@ public class FakeRepo implements FakeRepoInterface {
 
 
     @Override
-    public User findUserById(long Id) {
+    public User findUserById(long id) {
 
-       return userArray.get((int)Id);
+        for (User user: userArray) {
+            long userId = id;
+            if(userId == id)
+            return user;
+
+        }
+
+        return null;
 
     }
 
     @Override
-    public void deleteUser(long id) {
+    public String deleteUser(long id) {
 
-        userArray.remove((id));
+        for (User user:userArray) {
+
+            long userId = id;
+            if(userId == id)
+                userArray.remove(user);
+                return user.getName();
+        }
+
+        return "user was not found";
     }
 }

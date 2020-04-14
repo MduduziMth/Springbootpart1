@@ -12,24 +12,22 @@ public class UserServiceImpl implements UserService {
     private User user;
 
 
-
-    public void addUser(long id, String name, String surname){
+    @Override
+    public String addUser(long id, String name, String surname){
+        fakeRepo = new FakeRepo();
         fakeRepo.insertUser(id,name,surname);
-        System.out.println(name + "entered");
+        return name + " entered";
     }
-
-    public void removeUser(long Id){
-
-        user = fakeRepo.findUserById(Id);
-        String name = user.getName();
-        fakeRepo.deleteUser(Id);
-        System.out.println( name + "removed");
+    @Override
+    public String removeUser(long Id){
+        fakeRepo = new FakeRepo();
+        return  fakeRepo.deleteUser(Id) + " removed";
 
     }
-
-    public void getUser(long Id){
+    @Override
+    public String getUser(long Id){
         user = fakeRepo.findUserById(Id);
-        System.out.println( "hello" + user.getName());
+        return "hello " + user.getName();
 
     }
 }

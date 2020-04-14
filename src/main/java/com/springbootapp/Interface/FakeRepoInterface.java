@@ -8,7 +8,7 @@ public interface FakeRepoInterface  {
 
     User findUserById(long Id);
 
-    void deleteUser(long id);
+    String deleteUser(long id);
 
 
 }
